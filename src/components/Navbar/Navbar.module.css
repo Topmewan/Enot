@@ -1,0 +1,62 @@
+.header {
+	padding: 0 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.pop {
+	position: relative;
+}
+
+.pbutton {
+	background: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: none;
+}
+
+.panel {
+	min-width: max-content;
+	padding: 15px;
+	height: max-content;
+	right: 0;
+	background-color: white;
+	position: absolute;
+	z-index: 10;
+	top: 120%;
+	border-radius: 10px;
+	border: 1px solid black;
+	color: black;
+	display: grid;
+	grid-template-areas:
+		"title title"
+		"text switch";
+	gap: 15px;
+	align-items: center;
+}
+
+.title {
+	grid-area: title;
+}
+
+.text {
+	grid-area: text;
+}
+
+.switch {
+	grid-area: switch;
+}
+
+.animation {
+	transition: all 0.2s ease-in-out;
+}
+
+.animationFrom {
+	opacity: 0;
+}
+
+.animationTo {
+	opacity: 1;
+}

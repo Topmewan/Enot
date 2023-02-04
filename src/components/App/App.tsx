@@ -1,13 +1,26 @@
-import { UISwitch } from "../../ui";
+import { useGetNews, useNews } from "../../hooks";
 
-import { useState } from "react";
+import Marquee from "react-fast-marquee";
+import { getRandomItemInArray } from "../../config/helpers";
+import Navbar from "../Navbar";
 import styles from "./App.module.css";
 
 export const App = () => {
-	const [e, setE] = useState(false);
+	const { checked } = useNews();
+	const { data } = useGetNews(checked);
+
+	const randomNew = data?.articles ? getRandomItemInArray(data.articles) : null;
+
 	return (
 		<div className={styles.wrapper}>
-			<UISwitch checked={e} onChange={setE} />
+			<div className={styles.container}>
+				<Navbar />
+				{randomNew && checked ? (
+					<Marquee gradient={false} style={{ color: "white" }}>
+						{randomNew.title}
+					</Marquee>
+				) : null}
+			</div>
 		</div>
 	);
 };
