@@ -2,6 +2,7 @@ import { ForwardedRef, forwardRef } from "react";
 
 import { Switch } from "@headlessui/react";
 import classNames from "classnames";
+import { UIIcon } from "..";
 import styles from "./UISwitch.module.css";
 
 type UiSwitchProps = {
@@ -35,11 +36,11 @@ export const UISwitch = forwardRef(
 						[styles.thumbEnabled]: checked,
 					})}
 				>
-					{/* {checked ? (
+					{checked ? (
 						<UIIcon iconType='checked' />
 					) : (
 						<UIIcon iconType='close' />
-					)} */}
+					)}
 				</span>
 			</Switch>
 		);
