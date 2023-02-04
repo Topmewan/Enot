@@ -1,8 +1,8 @@
 import { ForwardedRef, forwardRef } from "react";
 
 import { Switch } from "@headlessui/react";
-import classNames from "classnames";
 import { UIIcon } from "..";
+import classNames from "classnames";
 import styles from "./UISwitch.module.css";
 
 type UiSwitchProps = {
