@@ -1,0 +1,42 @@
+.wrapper input[type="checkbox"] {
+	/* removing default appearance */
+	-webkit-appearance: none;
+	appearance: none;
+	/* creating a custom design */
+	width: 1.6em;
+	height: 1.6em;
+	border-radius: 0.15em;
+	margin-right: 0.5em;
+	border: 0.15em solid #007a7e;
+	outline: none;
+	cursor: pointer;
+	display: none;
+}
+
+.wrapper {
+	max-width: fit-content;
+	cursor: pointer;
+	display: flex;
+	gap: 10px;
+	align-items: center;
+}
+
+.wrapper input.checked {
+	display: none;
+	background-color: #007a7e;
+	position: relative;
+}
+
+.custom {
+	width: 23px;
+	height: 23px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: white;
+	border-radius: 5px;
+}
+
+.custom svg path {
+	fill: black;
+}

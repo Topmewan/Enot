@@ -1,7 +1,7 @@
 export const mockData = [
 	{
 		id: crypto.randomUUID(),
-		date: new Date("2023-05-02").toLocaleDateString(),
+		date: new Date("2022-02-02"),
 		todos: [
 			{
 				id: crypto.randomUUID(),
@@ -25,7 +25,7 @@ export const mockData = [
 	},
 	{
 		id: crypto.randomUUID(),
-		date: new Date("2022-02-02").toLocaleDateString(),
+		date: new Date("2023-02-02"),
 		todos: [
 			{
 				id: crypto.randomUUID(),
@@ -49,7 +49,7 @@ export const mockData = [
 	},
 	{
 		id: crypto.randomUUID(),
-		date: new Date("2023-02-02").toLocaleDateString(),
+		date: new Date("2023-02-04"),
 		todos: [
 			{
 				id: crypto.randomUUID(),
@@ -73,7 +73,7 @@ export const mockData = [
 	},
 	{
 		id: crypto.randomUUID(),
-		date: new Date("2023-02-04").toLocaleDateString(),
+		date: new Date("2023-02-03"),
 		todos: [
 			{
 				id: crypto.randomUUID(),
