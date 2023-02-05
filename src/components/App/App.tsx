@@ -2,7 +2,6 @@ import { Accordion, Form, Navbar, Todo } from "..";
 import { useGetNews, useNews, useTodos } from "../../hooks";
 import { UIBox, UICheckbox, UITypography } from "../../ui";
 
-import { useRef } from "react";
 import Marquee from "react-fast-marquee";
 import { getRandomItemInArray } from "../../config/helpers";
 import styles from "./App.module.css";
@@ -20,9 +19,6 @@ export const App = () => {
 	} = useTodos();
 
 	const randomNew = data?.articles ? getRandomItemInArray(data.articles) : null;
-
-	const refT = useRef<HTMLInputElement>(null);
-	const refD = useRef<HTMLInputElement>(null);
 
 	return (
 		<div className={styles.wrapper}>
