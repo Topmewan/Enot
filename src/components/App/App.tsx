@@ -1,12 +1,10 @@
+import { Accordion, Form, Navbar, Todo } from "..";
 import { useGetNews, useNews, useTodos } from "../../hooks";
 import { UIBox, UICheckbox, UITypography } from "../../ui";
 
 import { useRef } from "react";
 import Marquee from "react-fast-marquee";
 import { getRandomItemInArray } from "../../config/helpers";
-import Accordion from "../Accordion";
-import Navbar from "../Navbar";
-import { Todo } from "../Todo/Todo";
 import styles from "./App.module.css";
 
 export const App = () => {
@@ -25,19 +23,6 @@ export const App = () => {
 
 	const refT = useRef<HTMLInputElement>(null);
 	const refD = useRef<HTMLInputElement>(null);
-	const add = () => {
-		if (!refT?.current?.value || !refD?.current?.value) {
-			return;
-		}
-		const todoData = {
-			title: refT.current.value,
-			description: refD.current.value,
-		};
-
-		addTodo(todoData);
-		refT.current.value = "";
-		refD.current.value = "";
-	};
 
 	return (
 		<div className={styles.wrapper}>
@@ -65,9 +50,7 @@ export const App = () => {
 								</UITypography>
 							)}
 						</UIBox>
-						<input type='text' ref={refT} />
-						<input type='text' ref={refD} />
-						<button onClick={add}>Сохранить</button>
+						<Form />
 					</>
 				) : null}
 
