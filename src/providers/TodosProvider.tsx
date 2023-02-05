@@ -37,7 +37,7 @@ export const TodosProvider = ({ children }: { children: ReactNode }) => {
 	const today = new Date().toLocaleDateString();
 
 	const sortedMock = [...mockData].sort((a, b) => {
-		return new Date(b.date) - new Date(a.date);
+		return +new Date(b.date) - +new Date(a.date);
 	});
 
 	const [todayTodosVisible, setTodayTodosVisible] = useState(true);
