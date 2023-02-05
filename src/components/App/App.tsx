@@ -29,12 +29,12 @@ export const App = () => {
 		if (!refT?.current?.value || !refD?.current?.value) {
 			return;
 		}
-		const obj = {
+		const todoData = {
 			title: refT.current.value,
 			description: refD.current.value,
 		};
 
-		addTodo(obj);
+		addTodo(todoData);
 		refT.current.value = "";
 		refD.current.value = "";
 	};
@@ -81,9 +81,11 @@ export const App = () => {
 				{/* New */}
 
 				{randomNew && checked ? (
-					<Marquee gradient={false} style={{ color: "white" }}>
-						{randomNew.title}
-					</Marquee>
+					<div>
+						<Marquee gradient={false} className={styles.new}>
+							{randomNew.title}
+						</Marquee>
+					</div>
 				) : null}
 			</div>
 		</div>

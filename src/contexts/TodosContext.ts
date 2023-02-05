@@ -24,6 +24,7 @@ export type TodosContext = {
 		todoId: string,
 		type: "today" | "other"
 	) => void;
+	addTodo: ({ title, description }: { [key: string]: string }) => void;
 };
 export const TodosContext = createContext<TodosContext>({
 	data: [],
@@ -32,4 +33,5 @@ export const TodosContext = createContext<TodosContext>({
 	onChangeData: () => {},
 	todayTodosVisible: false,
 	onChangeTodayTodosVisible: () => {},
+	addTodo: () => {},
 });
