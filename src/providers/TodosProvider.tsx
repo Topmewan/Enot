@@ -78,7 +78,15 @@ export const TodosProvider = ({ children }: { children: ReactNode }) => {
 		}
 	};
 
-	const addTodo = ({ title, description }: { [key: string]: string }) => {
+	const addTodo = ({
+		date,
+		title,
+		description,
+	}: {
+		date: Date;
+		title: string;
+		description: string;
+	}) => {
 		const todo = {
 			title,
 			description,
@@ -86,29 +94,36 @@ export const TodosProvider = ({ children }: { children: ReactNode }) => {
 			complete: false,
 		};
 
-		const todayObject = data.find(
-			(item) => item.date.toLocaleDateString() === today
+		const currentObjectWithDateFromParam = data.find(
+			(item) => item.date.toLocaleDateString() === date.toLocaleDateString()
 		);
 
-		const newData = todayObject
+		const newData = currentObjectWithDateFromParam
 			? data.map((item) => {
-					if (item.date.toLocaleDateString() === today) {
+					if (item.date.toLocaleDateString() === date.toLocaleDateString()) {
 						return { ...item, todos: [...item.todos, todo] };
 					}
 					return item;
 			  })
-			: [...data, { id: crypto.randomUUID(), date: new Date(), todos: [todo] }];
+			: [...data, { id: crypto.randomUUID(), date: date, todos: [todo] }];
 
 		dispatchData({
 			type: "CHANGE_DATA",
 			payload: newData,
 		});
 
-		setTodayData((prev) =>
-			prev
-				? { ...prev, todos: [...prev.todos, todo] }
-				: { id: crypto.randomUUID(), date: new Date(), todos: [todo] }
-		);
+		setTodayData((prev) => {
+			if (prev) {
+				if (prev.date.toLocaleDateString() === date.toLocaleDateString()) {
+					return { ...prev, todos: [...prev.todos, todo] };
+				}
+				return prev;
+			} else {
+				if (date.toLocaleDateString() === today) {
+					return { id: crypto.randomUUID(), date: date, todos: [todo] };
+				}
+			}
+		});
 	};
 
 	const onChangeTodayTodosVisible = () => {

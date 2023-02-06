@@ -1,32 +1,52 @@
-import { ChangeEvent, useRef } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 
-import styles from "./Form.module.css";
 import { useTodos } from "../../hooks";
+import styles from "./Form.module.css";
+
+type FormValues = {
+	date: string;
+	title: string;
+	description: string;
+};
+
+const initialFormVals = {
+	date: "",
+	title: "",
+	description: "",
+};
 
 export const Form = () => {
 	const { addTodo } = useTodos();
-	const refT = useRef<HTMLInputElement>(null);
-	const refD = useRef<HTMLInputElement>(null);
 
-	const onSubmit = (e: ChangeEvent<HTMLFormElement>) => {
-		e.preventDefault();
-		if (!refT?.current?.value || !refD?.current?.value) {
-			return;
+	const {
+		register,
+		handleSubmit,
+		reset,
+		formState: { isSubmitting },
+	} = useForm<FormValues>({
+		defaultValues: initialFormVals,
+	});
+
+	const onSubmit: SubmitHandler<FormValues> = (data) => {
+		if (Object.values(data).some((v) => !v)) {
+			return alert("Заполните все поля");
 		}
-		const todoData = {
-			title: refT.current.value,
-			description: refD.current.value,
+		const newData = {
+			...data,
+			date: new Date(data.date),
 		};
-
-		addTodo(todoData);
-		refT.current.value = "";
-		refD.current.value = "";
+		addTodo(newData);
+		reset();
 	};
+
 	return (
-		<form onSubmit={onSubmit} className={styles.form}>
-			<input type='text' ref={refT} placeholder='Название' name='title' />
-			<input type='text' ref={refD} placeholder='Описание' name='description' />
-			<button type='submit'>Сохранить тудушку</button>
+		<form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+			<input type='date' {...register("date")} />
+			<input type='text' placeholder='Название' {...register("title")} />
+			<input type='text' placeholder='Описание' {...register("description")} />
+			<button type='submit' disabled={isSubmitting}>
+				Сохранить тудушку
+			</button>
 		</form>
 	);
 };

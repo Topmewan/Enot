@@ -45,9 +45,9 @@ export const App = () => {
 								</UITypography>
 							)}
 						</UIBox>
-						<Form />
 					</>
 				) : null}
+				<Form />
 
 				{/* Other */}
 				<>

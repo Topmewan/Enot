@@ -4,14 +4,14 @@
 	gap: 15px;
 }
 
-.form input[type="text"] {
+.form input {
 	padding: 10px;
 }
 
-.form input[type="text"]::placeholder {
+.form input::placeholder {
 	font-size: 1rem;
 }
-.form input[type="text"]:focus {
+.form input:focus {
 	outline: 1px solid red;
 }
 

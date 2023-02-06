@@ -24,7 +24,15 @@ export type TodosContext = {
 		todoId: string,
 		type: "today" | "other"
 	) => void;
-	addTodo: ({ title, description }: { [key: string]: string }) => void;
+	addTodo: ({
+		date,
+		title,
+		description,
+	}: {
+		date: Date;
+		title: string;
+		description: string;
+	}) => void;
 };
 export const TodosContext = createContext<TodosContext>({
 	data: [],
