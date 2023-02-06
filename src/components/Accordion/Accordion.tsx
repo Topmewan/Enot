@@ -1,8 +1,8 @@
-import { tomorrow } from "../../config/helpers";
 import { UIBox, UIDivider, UIIcon, UITypography } from "../../ui";
 
 import { Disclosure } from "@headlessui/react";
 import classNames from "classnames";
+import { tomorrow } from "../../config/helpers";
 import { Data } from "../../contexts/TodosContext";
 import { useTodos } from "../../hooks";
 import { Todo } from "../Todo/Todo";

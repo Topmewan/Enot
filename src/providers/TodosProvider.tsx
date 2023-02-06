@@ -1,8 +1,6 @@
 import { ReactNode, useMemo, useReducer, useState } from "react";
 import { Data, TodoModel, TodosContext } from "../contexts/TodosContext";
 
-import { mockData } from "../config/constants/data";
-
 const CHANGE_DATA = "CHANGE_DATA";
 
 const changeDataReducer = (
@@ -36,12 +34,8 @@ const changeData = (data: Data[], dataId: string, todoId: string) => {
 export const TodosProvider = ({ children }: { children: ReactNode }) => {
 	const today = new Date().toLocaleDateString();
 
-	const sortedMock = [...mockData].sort((a, b) => {
-		return +new Date(b.date) - +new Date(a.date);
-	});
-
 	const [todayTodosVisible, setTodayTodosVisible] = useState(true);
-	const [data, dispatchData] = useReducer(changeDataReducer, sortedMock);
+	const [data, dispatchData] = useReducer(changeDataReducer, []);
 
 	const [todayData, setTodayData] = useState<Data | undefined>(
 		data.find(({ date }) => date.toLocaleDateString() === today)
