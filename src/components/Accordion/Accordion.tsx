@@ -1,8 +1,8 @@
+import { tomorrow } from "../../config/helpers";
 import { UIBox, UIDivider, UIIcon, UITypography } from "../../ui";
 
 import { Disclosure } from "@headlessui/react";
 import classNames from "classnames";
-import { dataDateTransform } from "../../config/helpers";
 import { Data } from "../../contexts/TodosContext";
 import { useTodos } from "../../hooks";
 import { Todo } from "../Todo/Todo";
@@ -20,7 +20,7 @@ export const Accordion = ({ date, id: dataId, todos }: AccordionProps) => {
 							<div className={styles.wrapper}>
 								<UIDivider />
 								<UITypography as='h3' color='white'>
-									{dataDateTransform(date)}
+									{tomorrow(date)}
 									Task
 								</UITypography>
 							</div>

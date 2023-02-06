@@ -19,12 +19,12 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 	day: "2-digit",
 });
 
-export const dataDateTransform = (date: Date): string => {
-	const today = new Date();
-	const yesterday = new Date(today);
-	yesterday.setDate(yesterday.getDate() - 1);
-
-	return date.toDateString() === yesterday.toDateString()
-		? "Tomorrow"
-		: dateFormatter.format(date);
+export const tomorrow = (date: Date) => {
+	let tomorrow = new Date();
+	tomorrow.setDate(tomorrow.getDate() + 1);
+	if (date.getDate() === tomorrow.getDate()) {
+		return "Tomorrow";
+	} else {
+		return dateFormatter.format(date);
+	}
 };
